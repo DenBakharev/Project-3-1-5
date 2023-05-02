@@ -28,27 +28,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User saveUser(User user) {
         return userRepository.save(user);
     }
 
 
     @Override
+    @Transactional(readOnly = true)
     public User getUserById(long id) {
         return userRepository.getById(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> getListOfUsers() {
         return userRepository.findAll();
     }
 
     @Override
+    @Transactional
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }

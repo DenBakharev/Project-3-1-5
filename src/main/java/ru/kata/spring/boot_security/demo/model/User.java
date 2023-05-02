@@ -13,7 +13,8 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "users",
+        uniqueConstraints = {@UniqueConstraint(columnNames = "username")})
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +26,12 @@ public class User implements UserDetails {
 
     @Column
     private String password;
+    @Column
+    private String email;
+
+    @Column
+    private int age;
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
@@ -44,10 +51,14 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public User(long id, String username, String password, Set<Role> roles) {
-        this.id = id;
+
+
+
+    public User( String username, String password, String email, int age, Set<Role> roles) {
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.age = age;
         this.roles = roles;
     }
 

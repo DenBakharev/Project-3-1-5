@@ -15,11 +15,14 @@
     <label for="password">Enter password: </label>
     <input type="text" placeholder="password" th:field="*{password}" id="password"/>
     <br/>
-    <select class="form-control" id="roles" name="roles" >
+    <select class="form-control" id="roles" name="roles" multiple=multiple>
+
         <option th:each="role : ${roles}"
                 th:selected="${role.roleName}"
                 th:value="${role.id}"
                 th:text="${role.roleName}">Role name</option>
+
+
     </select>
     <br/>
     <input type="submit" value="Update user"/>
