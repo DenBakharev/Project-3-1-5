@@ -22,15 +22,15 @@ public class User implements UserDetails {
     private long id;
 
     @Column
-    private String username;
-
+    private String firstname;
+    @Column
+    private String lastname;
     @Column
     private String password;
     @Column
-    private String email;
-
-    @Column
     private int age;
+    @Column
+    private String username;
 
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -52,13 +52,36 @@ public class User implements UserDetails {
     }
 
 
+    public String getFirstname() {
+        return firstname;
+    }
 
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
-    public User( String username, String password, String email, int age, Set<Role> roles) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
         this.age = age;
+    }
+
+    public User(String firstname, String lastname, String password, int age, String username, Set<Role> roles) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+        this.age = age;
+        this.username = username;
         this.roles = roles;
     }
 

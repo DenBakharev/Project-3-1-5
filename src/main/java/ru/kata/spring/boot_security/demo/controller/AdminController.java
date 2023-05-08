@@ -1,15 +1,15 @@
 package ru.kata.spring.boot_security.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.repository.RoleRepository;
 import ru.kata.spring.boot_security.demo.service.UserService;
-import ru.kata.spring.boot_security.demo.service.UserServiceImpl;
 
-import java.util.List;
+
+
 
 @Controller
 @RequestMapping("/admin")
@@ -23,18 +23,13 @@ public class AdminController {
         this.roleRepository = roleRepository;
     }
 
-    @GetMapping()
-    public String findAll(Model model) {
-        List<User> users = userService.getListOfUsers();
-        model.addAttribute("users", users);
-        return "admin";
-    }
 
-    @GetMapping("/create")
+    @GetMapping()
     public String createUserForm(Model model) {
-        model.addAttribute("roles", roleRepository.findAll());
-        model.addAttribute("user", new User());
-        return "create";
+        model.addAttribute("allUsers", userService.getListOfUsers());
+        model.addAttribute("allRoles", roleRepository.findAll());
+        model.addAttribute("newUser", new User());
+        return "admin";
     }
 
     @PostMapping()
@@ -43,7 +38,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("{id}/delete")
+    @DeleteMapping("{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteUserById(id);
         return "redirect:/admin";
