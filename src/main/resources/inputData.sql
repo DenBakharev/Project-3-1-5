@@ -1,7 +1,7 @@
-insert into users (  age, firstname, lastname, password,  username)
-values (25,'Rick','Petrov','$2a$12$rWyOmeyCMHzpYh18EHnAqOVMgpE2b0zrDH2CyM1S.Rm5AlEmgbrPG','user');--password 110
-insert into users ( age, firstname, lastname, password, username)
-values (35,'Morty','Mortirasyn','$2a$12$rWyOmeyCMHzpYh18EHnAqOVMgpE2b0zrDH2CyM1S.Rm5AlEmgbrPG','admin');--password 110
+insert into users ( firstname, lastname, password,age,  username)
+values ('Rick','Petrov','$2a$12$rWyOmeyCMHzpYh18EHnAqOVMgpE2b0zrDH2CyM1S.Rm5AlEmgbrPG',25,'user');--password 110
+insert into users ( firstname, lastname, password,age, username)
+values ('Morty','Mortirasyn','$2a$12$rWyOmeyCMHzpYh18EHnAqOVMgpE2b0zrDH2CyM1S.Rm5AlEmgbrPG',35,'admin');--password 110
 
 insert into roles (role_name) value ('ROLE_USER');
 insert into roles (role_name) value ('ROLE_ADMIN');
