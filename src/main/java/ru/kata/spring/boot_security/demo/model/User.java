@@ -29,7 +29,7 @@ public class User implements UserDetails {
     private String password;
     @Column
     private int age;
-    @Column
+    @Column(unique = true)
     private String username;
 
 
@@ -41,6 +41,15 @@ public class User implements UserDetails {
 
     public User() {
 
+    }
+
+    public User(String firstname, String lastname, String password, int age, String username, Set<Role> roles) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+        this.age = age;
+        this.username = username;
+        this.roles = roles;
     }
 
     public Set<Role> getRoles() {
@@ -74,15 +83,6 @@ public class User implements UserDetails {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public User(String firstname, String lastname, String password, int age, String username, Set<Role> roles) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-        this.age = age;
-        this.username = username;
-        this.roles = roles;
     }
 
     public long getId() {

@@ -11,7 +11,7 @@
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
     <div class="container-fluid mr-auto">
                 <span class="navbar-brand">
-                    <strong th:text="${#authentication.getPrincipal()}"></strong>
+                    <strong th:text="${#authentication.getName()}"></strong>
                     <span>
                         <a th:text="' with roles: ' + ${#strings.setJoin(#authentication.getAuthorities(), ' ')}"></a>
                     </span>
@@ -110,7 +110,7 @@
                                                                         <div class="form-group text-center">
                                                                             <label for="e-name"><strong>First
                                                                                 Name</strong></label>
-                                                                            <input type="text" name="firstName"
+                                                                            <input type="text" name="firstname"
                                                                                    class="form-control"
                                                                                    id="e-name"
                                                                                    th:value="${user.firstname}">
@@ -118,7 +118,7 @@
                                                                         <div class="form-group text-center">
                                                                             <label for="e-LastName"><strong>Last
                                                                                 Name</strong></label>
-                                                                            <input type="text" name="lastName"
+                                                                            <input type="text" name="lastname"
                                                                                    class="form-control"
                                                                                    id="e-LastName"
                                                                                    th:value="${user.lastname}">
@@ -205,7 +205,7 @@
                                                                         <div class="form-group text-center">
                                                                             <label for="del-name"><strong>First
                                                                                 Name</strong></label>
-                                                                            <input type="text" name="firstName"
+                                                                            <input type="text" name="firstname"
                                                                                    class="form-control"
                                                                                    readonly id="del-name"
                                                                                    th:value="${user.firstname}">
@@ -279,14 +279,14 @@
                                         <form th:method="POST" th:action="@{/admin}">
                                             <div class="form-group text-center">
                                                 <label for="new-name"><strong>First Name</strong></label>
-                                                <input type="text" name="firstName"
+                                                <input type="text" name="firstname"
                                                        class="form-control"
                                                        id="new-name"
                                                        th:value="${newUser.firstname}">
                                             </div>
                                             <div class="form-group text-center">
                                                 <label for="new-lastname"><strong>Last Name</strong></label>
-                                                <input type="text" name="lastName"
+                                                <input type="text" name="lastname"
                                                        class="form-control"
                                                        id="new-lastname"
                                                        th:value="${newUser.lastname}">
