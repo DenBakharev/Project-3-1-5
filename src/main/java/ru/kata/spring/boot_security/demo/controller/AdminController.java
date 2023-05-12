@@ -44,14 +44,14 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("{id}/update")
+    @GetMapping("/{id}/update")
     public String updateUserForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("roles", roleRepository.findAll());
         model.addAttribute("user", userService.getUserById(id));
         return "/update";
     }
 
-    @PostMapping("/{id}")
+    @PatchMapping("/{id}")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
         userService.saveUser(user);
         return "redirect:/admin";
